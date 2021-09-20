@@ -42,6 +42,9 @@ app.use(function(req, res, next){
 } );
 
 
+//templating engine
+app.set('view engine', 'pug');
+app.set('views','./views');
 
 
 const courses = [
@@ -50,9 +53,18 @@ const courses = [
   { id: 3, name: "course3" },
 ];
 
+// app.get("/", (req, res) => {
+//   res.send("Hello World");
+// }); // '/' is represent route of the website
+
+
 app.get("/", (req, res) => {
-  res.send("Hello World");
-}); // '/' is represent route of the website
+  res.render('index',{
+
+  });
+}); // templating engine
+
+
 
 app.get("/api/courses", (req, res) => {
   res.send(courses);
