@@ -2,12 +2,13 @@
 const config =require("config")
 const helmet = require("helmet");
 const morgan = require("morgan");
-const Joi = require("joi");
 const express = require("express");
 const logger = require("./logger");
 // const { application } = require("express");
 
-const courses = require("./courses");
+const courses = require("./routes/courses");
+const home = require("./routes/home");
+
 const app = express(); //returning from express import
 
 ////Environment  
@@ -24,7 +25,9 @@ app.use(helmet());
 app.use(morgan('tiny'));//log the request that we add
 
 
-app.use('/', courses);
+app.use('/api/courses', courses);
+app.use('/', home);
+
 
 //Configuration
 //Storing configuration setting to our application
@@ -50,24 +53,9 @@ app.use(function(req, res, next){
 app.set('view engine', 'pug');
 app.set('views','./views');
 
-app.get("/", (req, res) => {
-  res.render('index',{
-    title:"My Express App", 
-    message:"Hello World"
-  });
-}); // templating engine
-
-
-
-
-app.get("/", (req, res) => {
-  res.send("Hello World");
-}); // '/' is represent route of the website
-
-
-
-
-
+// app.get("/", (req, res) => {
+//   res.send("Hello World");
+// }); // '/' is represent route of the website
 
 
 //PORT
