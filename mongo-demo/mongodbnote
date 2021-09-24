@@ -1,0 +1,12 @@
+Schema types of mongoose
+
+1.String
+2.Number
+3.Date
+4.Buffer
+5.Boolean
+6.Mixed
+7.ObjectId
+8.Array
+9.Decimal128
+10.Map
